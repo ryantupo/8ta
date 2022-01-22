@@ -420,6 +420,34 @@
 
     </style>
 
+    <style>
+        .thing {
+            padding: 1rem;
+            width: 420px;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+                0 5px 15px 0 rgba(0, 0, 0, 0.08);
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+
+            border-left: 0 solid #b4b4b4;
+            transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+        }
+
+        .thing> :first-child {
+            margin-top: 0;
+        }
+
+        .thing> :last-child {
+            margin-bottom: 0;
+        }
+
+
+        a:hover {
+            color: black;
+        }
+
+    </style>
+
 
 </head>
 
@@ -433,16 +461,11 @@
     </div>
 
     <div>
-        <h1 class="mx-auto pt-5" style="width: 200px;">Blog Posts</h1>
+        <h1 class="mx-auto pt-5" style="width: 200px; margin-bottom: 1.5rem;">Blog Posts</h1>
     </div>
 
-
-    <a href="/">HOME</a>
-
-
-
-    <div class="pt-5" style="width: 60%; margin: 0 auto">
-        <?= $post; ?>
+    <div class="thing" style="width: 60%; margin: 0 auto; margin-top: 1.5rem; padding-bottom: 3rem">
+        <?= $post ?>
 
     </div>
 
