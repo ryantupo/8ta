@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +23,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', function () {
-    return view('blog');
+
+    $posts = Post::allPosts();
+
+    return view('blog', [
+        'posts' => $posts,
+    ]);
 });
 
 Route::get('/blog/{post}', function ($slug) {
 
-    $post = Post::find($slug);
-
     return view('blogpost', [
-        'post' => $post,
+        'post' => Post::find($slug),
     ]);
 
 })->where('post', '[A-z_\-]+');
