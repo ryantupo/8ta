@@ -277,7 +277,7 @@
         .w-5 {
             width: 1.25rem
         }
-        
+
         .w-8 {
             width: 2rem
         }
@@ -285,7 +285,7 @@
         .w-10 {
             width: 2.5rem
         }
-        
+
         .w-20 {
             width: 5rem
         }
@@ -293,7 +293,7 @@
         .w-30 {
             width: 7.5rem
         }
-        
+
         .w-30 {
             width: 10rem
         }
@@ -425,6 +425,7 @@
 <body class="antialiased">
     <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
         <img src="{{ asset('images/8taLogo.png') }}" class="w-30 p-6" alt="8talogo" title="" />
+        <a href="/blog">Blog Posts</a>
     </div>
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
