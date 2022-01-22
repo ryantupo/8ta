@@ -439,6 +439,20 @@
 
     <a href="/">HOME</a>
 
+
+    <?php foreach ($posts as $post) : ?>
+
+    <article class="pt-5" style="width: 60%; margin: 0 auto">
+
+        <?= $post ?>
+
+    </article>
+
+    <?php endforeach; ?>
+
+
+
+
 </body>
 
 </html>
