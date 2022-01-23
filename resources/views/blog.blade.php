@@ -468,21 +468,21 @@
         <h1 class="mx-auto pt-5" style="width: 200px;">Blog Posts</h1>
     </div>
 
-    <?php foreach ($posts as $post) : ?>
+    @foreach ($posts as $post)
 
-    <a href="/blog/<?= $post->slug ?>">
-        <article class="thing" style="width: 60%; margin: 0 auto; margin-top: 1.5rem; padding-bottom: 3rem">
+        <a href="/blog/{{ $post->slug }}">
+            <article class="thing" style="width: 60%; margin: 0 auto; margin-top: 1.5rem; padding-bottom: 3rem">
 
-            <h1><?= $post->title ?></h1>
-
-
-            <p><?= $post->excerpt ?></p>
+                <h1>{{ $post->title }}</h1>
 
 
-        </article>
-    </a>
+                <p>{{ $post->excerpt }}</p>
 
-    <?php endforeach; ?>
+
+            </article>
+        </a>
+
+    @endforeach
 
 
 
