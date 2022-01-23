@@ -24,11 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/blog', function () {
 
-    $posts = Post::allPosts();
-
     return view('blog', [
-        'posts' => $posts,
+        'posts' => Post::allPosts(),
     ]);
+
 });
 
 Route::get('/blog/{post}', function ($slug) {
