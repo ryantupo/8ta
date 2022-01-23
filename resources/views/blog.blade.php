@@ -470,11 +470,17 @@
 
     <?php foreach ($posts as $post) : ?>
 
-    <article class="thing" style="width: 60%; margin: 0 auto; margin-top: 1.5rem; padding-bottom: 3rem">
+    <a href="/blog/<?= $post->slug ?>">
+        <article class="thing" style="width: 60%; margin: 0 auto; margin-top: 1.5rem; padding-bottom: 3rem">
 
-        <?= $post ?>
+            <h1><?= $post->title ?></h1>
 
-    </article>
+
+            <p><?= $post->excerpt ?></p>
+
+
+        </article>
+    </a>
 
     <?php endforeach; ?>
 
