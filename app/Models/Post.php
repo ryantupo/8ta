@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -104,15 +105,13 @@ class Post extends Model
     public static function find($slug)
     {
 
-        return static::allPosts()->firstWhere('slug', $slug);
+        $post = static::allPosts()->firstWhere('slug', $slug);
 
-        // $path = resource_path() . "/posts/" . $slug . ".html";
+        if (!$post) {
+            throw new ModelNotFoundException();
+        }
 
-        // if (!file_exists($path)) {
-        //     throw ModelNotFoundException();
-        // }
-
-        // return cache()->remember("blog.{$slug}", 1, fn() => file_get_contents($path));
+        return $post;
 
     }
 
