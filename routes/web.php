@@ -36,4 +36,6 @@ Route::get('/blog/{post}', function ($slug) {
         'post' => Post::find($slug),
     ]);
 
-})->where('post', '[A-z_\-]+');
+});
+
+
