@@ -1,6 +1,6 @@
 <body class="antialiased">
     <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <a href="/"><img src="{{ asset('images/8taLogo.png') }}" class="w-30 p-6" alt="8talogo" title="" /></a>
+        <a href="/"><img src="{{ asset('images/8taLogoSmall.png') }}" class="w-30 p-6" alt="8talogo" title="" /></a>
     </div>
 </body>
 
