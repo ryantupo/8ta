@@ -25,15 +25,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/blog', function () {
 
     return view('blog', [
-        'posts' => Post::allPosts(),
+        'posts' => Post::all(),
     ]);
 
 });
 
-Route::get('/blog/{post}', function ($slug) {
+Route::get('/blog/{post:slug}', function (Post $post) {
 
     return view('blogpost', [
-        'post' => Post::find($slug),
+        'post' => $post,
     ]);
 
 });
