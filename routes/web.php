@@ -38,4 +38,10 @@ Route::get('/blog/{post:slug}', function (Post $post) {
 
 });
 
+Route::get('/chart', function () {
+    return view('charts/testChart',[
+
+    ]);
+});
+
 
