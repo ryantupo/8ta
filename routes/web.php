@@ -2,7 +2,7 @@
 
 use App\Models\Post;
 use App\Models\Chart;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,9 +41,18 @@ Route::get('/blog/{post:slug}', function (Post $post) {
 });
 
 Route::get('/chart/{chart:id}', function (Chart $chart) {
-    return view('charts/testChart',[
-        'chart' => $chart
-    ]);
+    if (Auth::check()) {
+        $id = Auth::user()->id;
+        return view('charts/testChart',[
+            'chart' => chart::where('user_id', $id )->first()
+        ]);
+    }else{
+        abort(404);
+    }
 });
 
+//route for testing error pages
+Route::get('/error', function () {
+    abort(500);
+});
 
