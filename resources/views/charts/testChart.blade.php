@@ -18,32 +18,18 @@
             <canvas id="myChart"></canvas>
         </div>
 
+        <div id="chart" data-type="{{$chart->config}}"><div>
+
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <script>
 
-            const config = {
-                type: 'line',
-                data: {
-                    labels: [
-                        'January',
-                        'February',
-                        'March',
-                        'April',
-                        'May',
-                        'June',
-                    ],
-                    datasets: [{
-                        label: 'My First dataset',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [0, 10, 5, 2, 20, 30, 45],
-                    }]
-                },
-                options: {}
-            };
-            
+        <script>
+            var elem = document.getElementById('chart');
+            var config = JSON.parse(elem.getAttribute('data-type'));
+
         </script>
+
+
 
         <script>
             const myChart = new Chart(
@@ -51,9 +37,6 @@
                 config
             );
         </script>
-
-
-
 
     </body>
 
