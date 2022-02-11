@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class chartSeeder extends Seeder
+class blogSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,9 @@ class chartSeeder extends Seeder
      */
     public function run()
     {
-        foreach (glob(database_path() . '\seeds\charts\*.sql') as $filename) {
+        foreach (glob(database_path() . '\seeds\blogs\*.sql') as $filename) {
             $sql = file_get_contents($filename);
-            DB::connection(`8ta.charts`)->unprepared($sql);
+            DB::connection(`8ta.posts`)->unprepared($sql);
         }
     }
 }

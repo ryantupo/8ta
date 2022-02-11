@@ -14,18 +14,9 @@ class userSeeder extends Seeder
      */
     public function run()
     {
-        $path = (glob(database_path('/seeds/users/users.sql')));
-        $sql = file_get_contents($path);
-        // DB::unprepared($sql);
-        DB::connection('users')->unprepared($sql);
-
-        dd($path);
-        echo($path);
-
-
-        // foreach (glob(database_path() . '/seeds/users/*.sql') as $filename) {
-        //     $sql = file_get_contents($filename);
-        //     DB::connection('users')->unprepared($sql);
-        // }
+        foreach (glob(database_path() . '\seeds\users\*.sql') as $filename) {
+            $sql = file_get_contents($filename);
+            DB::connection(`8ta.users`)->unprepared($sql);
+        }
     }
 }
