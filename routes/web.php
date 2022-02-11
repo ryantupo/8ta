@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Chart;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +40,9 @@ Route::get('/blog/{post:slug}', function (Post $post) {
 
 });
 
-Route::get('/chart', function () {
+Route::get('/chart/{chart:id}', function (Chart $chart) {
     return view('charts/testChart',[
-
+        'chart' => $chart
     ]);
 });
 
