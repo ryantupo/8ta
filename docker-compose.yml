@@ -1,0 +1,52 @@
+version: '3'
+
+networks:
+  laravel: 
+
+services:
+  nginx: 
+    image: nginx:stable-alpine
+    container_name: nginx8ta
+    ports:
+      - "8088:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - mysql
+
+    networks:
+      - laravel
+  
+  mysql: 
+    # platform: linux/x86_64
+    image: mariadb:10.5.8
+    container_name: mysql8ta
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "4306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: '8ta'    
+      MYSQL_USER: 'dev'    
+      MYSQL_PASSWORD: 'root' 
+      MYSQL_ROOT_PASSWORD: 'root'    
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - laravel
+  
+  php: 
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: php8ta
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - laravel

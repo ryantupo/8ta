@@ -22,11 +22,18 @@
                 {{--  <a class="nav-link" href="/chart/1">Charts</a>  --}}
                 <div class="dropdown">
                     <button onclick="myFunction()" class="nav-link dropbtn">Dropdown</button>
+
                     <div id="myDropdown" class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
+                    @for ($i = 0; $i < $countcharts; $i++)
+                    <a href="/chart/"$i>XXXX</a>
+                    @endfor
+
+                      <!-- <a href="/chart/1">Link 1</a>
+                      <a href="/chart/2">Link 2</a>
+                      <a href="/chart/3">Link 3</a> -->
                     </div>
+                  
+                  
                   </div>
             </li>
 
@@ -52,6 +59,11 @@
 
             </li>
         </ul>
+        {{!! $countcharts !!}}
+
+        {{!! $sd !!}}
+        
+
     </div>
 </nav>
 
