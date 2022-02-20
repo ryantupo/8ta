@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        view()->composer('*', function($view) {
+            $view->with('user', auth()->user());
+        });
+
         //
     }
 }
