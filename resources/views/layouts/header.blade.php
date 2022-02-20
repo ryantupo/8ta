@@ -24,16 +24,21 @@
                     <button onclick="myFunction()" class="nav-link dropbtn">Dropdown</button>
 
                     <div id="myDropdown" class="dropdown-content">
-                    @for ($i = 0; $i < $countcharts; $i++)
+                    {{--  @for ($i = 0; $i < $countcharts; $i++)
                     <a href="/chart/"$i>XXXX</a>
-                    @endfor
+                    @endfor  --}}
+
+                    @foreach (json_decode($usercharts, true) as $data)
+                    {{--  <img src="{{ $image[0][0] }}" alt="" width="100%">  --}}
+                    <a href="/chart/{{ $data['id'] }}">{{ $data['chart_name'] }}</a>
+                        @endforeach
 
                       <!-- <a href="/chart/1">Link 1</a>
                       <a href="/chart/2">Link 2</a>
                       <a href="/chart/3">Link 3</a> -->
                     </div>
-                  
-                  
+
+
                   </div>
             </li>
 
@@ -59,11 +64,6 @@
 
             </li>
         </ul>
-        {{!! $countcharts !!}}
-
-        {{!! $sd !!}}
-        
-
     </div>
 </nav>
 
