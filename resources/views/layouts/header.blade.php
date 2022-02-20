@@ -19,26 +19,16 @@
             </li>
             @auth
             <li class="nav-item active dropdown">
-                {{--  <a class="nav-link" href="/chart/1">Charts</a>  --}}
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="nav-link dropbtn">Dropdown</button>
+                    <button onclick="myFunction()" class="nav-link dropbtn" style="background:#f7fafc;margin-top:-7px;">Dropdown</button>
 
                     <div id="myDropdown" class="dropdown-content">
-                    {{--  @for ($i = 0; $i < $countcharts; $i++)
-                    <a href="/chart/"$i>XXXX</a>
-                    @endfor  --}}
 
                     @foreach (json_decode($usercharts, true) as $data)
-                    {{--  <img src="{{ $image[0][0] }}" alt="" width="100%">  --}}
+
                     <a href="/chart/{{ $data['id'] }}">{{ $data['chart_name'] }}</a>
                         @endforeach
-
-                      <!-- <a href="/chart/1">Link 1</a>
-                      <a href="/chart/2">Link 2</a>
-                      <a href="/chart/3">Link 3</a> -->
                     </div>
-
-
                   </div>
             </li>
 
@@ -92,16 +82,11 @@
 
 <style>
     .dropbtn {
-      background-color: #3498DB;
       color: white;
       padding: 16px;
       font-size: 16px;
       border: none;
       cursor: pointer;
-    }
-
-    .dropbtn:hover, .dropbtn:focus {
-      background-color: #2980B9;
     }
 
     .dropdown {
@@ -126,7 +111,7 @@
       display: block;
     }
 
-    .dropdown a:hover {background-color: #ddd;}
+    .dropdown a:hover {background-color: rgb(255, 255, 255);}
 
     .show {display: block;}
     </style>
