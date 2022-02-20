@@ -44,7 +44,7 @@ Route::get('/chart/{chart:id}', function (Chart $chart) {
     if (Auth::check()) {
         $id = Auth::user()->id;
         return view('charts/testChart',[
-            'chart' => chart::where('user_id', $id )->first()
+            'chart' => chart::where('user_id', $id )->where('id', $chart->id)->first()
         ]);
     }else{
         abort(404);
