@@ -20,7 +20,7 @@
             @auth
             <li class="nav-item active dropdown">
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="nav-link dropbtn" style="background:#f7fafc;margin-top:-7px;">Dropdown</button>
+                    <button onclick="myFunction()" class="nav-link dropbtn" style="background:#f7fafc;margin-top:-7px;">Charts</button>
 
                     <div id="myDropdown" class="dropdown-content">
 
