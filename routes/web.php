@@ -51,12 +51,20 @@ Route::get('/chart/{chart:id}', function (Chart $chart) {
     }
 });
 
+
+Route::get('/addchart', function(){
+    if (Auth::check()) {
+        return view('charts/chartAdd');
+    }else{
+        abort(404);
+    }
+});
+
+
+
 //route for testing error pages
 Route::get('/error', function () {
     abort(500);
 });
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

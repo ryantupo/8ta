@@ -37,7 +37,7 @@
 
             @endauth
             <li class="nav-item active">
-                <a class="nav-link" href="/chart/add">+</a>
+                <a class="nav-link" href="/addchart">+</a>
             </li>
             <li class="nav-item active">
 
