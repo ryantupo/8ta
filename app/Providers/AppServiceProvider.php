@@ -28,18 +28,16 @@ class AppServiceProvider extends ServiceProvider
         //gives access to the number of charts the user has to all blades
         //compose all the views....
         view()->composer('*', function ($view) {
-            $countcharts = chart::where('user_id', Auth::user()->id)->count();
-            // $userchartIds = chart::where('user_id', Auth::user()->id)->get(['id']);
-            $usercharts = chart::where('user_id', Auth::user()->id)->get(['id','chart_name']);
+            if (Auth::user() != null) {
 
+                $countcharts = chart::where('user_id', Auth::user()->id)->count();
+                // $userchartIds = chart::where('user_id', Auth::user()->id)->get(['id']);
+                $usercharts = chart::where('user_id', Auth::user()->id)->get(['id', 'chart_name']);
 
-            //...with this variable
-            $view->with('countcharts', $countcharts);
-            $view->with('usercharts', $usercharts);
-
-
+                //...with this variable
+                $view->with('countcharts', $countcharts);
+                $view->with('usercharts', $usercharts);
+            }
         });
-
-        //
     }
 }
