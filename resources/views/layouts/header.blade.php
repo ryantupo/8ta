@@ -3,7 +3,8 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <a href="/"><img src="{{ asset('images/8taLogoSmall.png') }}" class="w-30 p-6" alt="8talogo" title="" /></a>
+        <a href="/"><img src="{{ asset('images/8taLogoSmall.png') }}" class="w-30 p-6" alt="8talogo"
+                title="" /></a>
     </div>
 </body>
 
@@ -21,25 +22,25 @@
                 <a class="nav-link" href="/blog">Blog</a>
             </li>
             @auth
-            <li class="nav-item active dropdown">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="nav-link dropbtn" style="background:#f7fafc;margin-top:-7px;">Charts</button>
+                <li class="nav-item active dropdown">
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="nav-link dropbtn"
+                            style="background:#f7fafc;margin-top:-7px;">Charts</button>
 
-                    <div id="myDropdown" class="dropdown-content">
+                        <div id="myDropdown" class="dropdown-content">
 
-                    @foreach (json_decode($usercharts, true) as $data)
-
-                    <a href="/chart/{{ $data['id'] }}">{{ $data['chart_name'] }}</a>
-                        @endforeach
+                            @foreach (json_decode($usercharts, true) as $data)
+                                <a href="/chart/{{ $data['id'] }}">{{ $data['chart_name'] }}</a>
+                            @endforeach
+                        </div>
                     </div>
-                  </div>
-            </li>
+                </li>
 
-            @endauth
-            <li class="nav-item active">
-                <a class="nav-link" href="/addchart">+</a>
-            </li>
-            <li class="nav-item active">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/addchart">+</a>
+                </li>
+                <li class="nav-item active">
+                @endauth
 
                 @if (Route::has('login'))
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -68,66 +69,70 @@
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
     function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
+        document.getElementById("myDropdown").classList.toggle("show");
     }
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
         }
-      }
     }
-    </script>
+</script>
 
 <style>
     .dropbtn {
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
     }
 
     .dropdown {
-      position: relative;
-      display: inline-block;
+        position: relative;
+        display: inline-block;
     }
 
     .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f1f1f1;
-      min-width: 160px;
-      overflow: auto;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
     }
 
     .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
     }
 
-    .dropdown a:hover {background-color: rgb(255, 255, 255);}
+    .dropdown a:hover {
+        background-color: rgb(255, 255, 255);
+    }
 
-    .show {display: block;}
+    .show {
+        display: block;
+    }
+
     .navbar-collapse.in {
         display: block !important;
     }
 
     .navbar-light .navbar-toggler {
-        color: rgba(0,0,0,.55);
-        border-color: rgba(0,0,0,0) !important;
+        color: rgba(0, 0, 0, .55);
+        border-color: rgba(0, 0, 0, 0) !important;
     }
-    </style>
 
-
+</style>
