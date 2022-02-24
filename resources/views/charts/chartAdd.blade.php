@@ -11,12 +11,18 @@
         </div>
 
 
-        <div class="form">
-            <form>
+        <div action="" method="post" id="mainForm" class="form">
+            <form method="post" action="{{ route('chart.store') }}">
 
-                //the type of chart
-                <div class="form-group">
-                    <label for="charts">Example select</label>
+
+                <div class="mt-3 form-group">
+                    <label for="chartName">Chart Name</label>
+                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name">
+                </div>
+
+                {{-- the type of chart --}}
+                <div class="mt-3 form-group">
+                    <label for="charts">Type Of Chart</label>
                     <select class="form-control" id="chart">
                         <option>Pie Chart</option>
                         <option>Line Chart</option>
@@ -24,81 +30,167 @@
                 </div>
 
 
-                //the number of data points
-                <div class="form-group">
-                    <label for="datasets">Example multiple select</label>
-                    <select multiple class="form-control" id="dataset">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                {{-- the number of data points --}}
+                <div class="mt-3 form-group">
+                    <label for="datasets">Amount Of Data Points</label>
+                    <select id="dataset" multiple="multiple" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
 
+                {{-- data names and values --}}
+                <div id="datasets" class="form-group">
+dfssdf
 
-                {{--  <div id="dataSets" class="form-group">
-                    <label for="exampleFormControlTextarea1">{{ $dataset }}</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
 
 
-                <div id="myHTMLWrapper">
+                <button type="button" class="mt-3 button btn btn-success btn-lg center-block" id="submitBtn">Check it
+                    out!</button>
 
-                </div>  --}}
-
-                <script>
-                  var wrapper = document.getElementById("dataSets");
-
-                  var myHTML = ''
-
-                  for (var i = 0; i < document.getElementById("dataset").value; i++) {
-                    myHTML += '<div id="dataSets" class="form-group"><label for="exampleFormControlTextarea1">' + 'Data Value '  +  i + ' </label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>';;
-                  }
-                  wrapper.innerHTML = myHTML
-                </script>
-
-
-
-
-                <input type="text" name="chance" value=""
-                    onkeyup="document.querySelector('input[name=payout]').value=this.value?1/this.value*98:''">
-
-
-
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Example select</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Example multiple select</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
             </form>
+
+
+            <script type="text/javascript">
+                //get the amount of data sets in the chart
+                $("#dataset option").click(function() {
+                    var value = $(this).attr("value");
+                    console.log(value);
+
+                    //seems like there is no built in funciton's but in jquery
+                    $(datasets).empty();
+                    makeData(value);
+
+
+
+                });
+
+
+                function clearBox(elementID) {
+                    document.getElementById(elementID).innerHTML = "";
+                }
+
+                function makeData(number) {
+
+                    for (let i = 0; i < number; i++) {
+
+                        let divL = document.createElement("label"); // Create a new element
+                        divL.className = 'mt-3';
+                        divL.setAttribute('for', 'DataTextArea');
+                        divL.setAttribute('value', 'Data textarea');
+
+                        let divT = document.createElement("textarea"); // Create a new element
+                        divT.className = 'mt-3 form-control';
+                        divT.setAttribute('id', 'dataTextArea' + i); // Change the text of the element
+                        divT.setAttribute('row', '1');
+
+                        let divL2 = document.createElement("label"); // Create a new element
+                        divL.className = 'mt-3';
+                        divL2.setAttribute('for', 'DataTextArea');
+                        divL2.setAttribute('value', 'Data textarea');
+
+                        let divT2 = document.createElement("textarea"); // Create a new element
+                        divT2.className = 'mt-3 form-control';
+                        divT2.setAttribute('id', 'dataTextArea2' + i); // Change the text of the element
+                        divT2.setAttribute('row', '1');
+
+                        divL.appendChild(document.createTextNode("Data Point Name " + (i + 1)));
+                        divL2.appendChild(document.createTextNode("Data Point Value " + (i + 1)));
+
+                        //name of data point
+                        document.getElementById("datasets").appendChild(divL);
+                        document.getElementById("datasets").appendChild(divT);
+
+                        //value of data
+                        document.getElementById("datasets").appendChild(divL2);
+                        document.getElementById("datasets").appendChild(divT2);
+                    }
+                }
+
+
+
+                document.getElementById("submitBtn").addEventListener("click", function() {
+
+                    {{-- chart name --}}
+                    console.log(document.getElementById("chartName").value);
+                    let chartName = document.getElementById("chartName").value;
+
+
+                    {{-- chart type --}}
+                    console.log(document.getElementById("chart").value);
+                    let chartType = document.getElementById("chart").value;
+
+
+                    {{-- amount of data sets --}}
+                    console.log(document.getElementById("dataset").value);
+                    let dataPointAmount = document.getElementById("dataset").value;
+
+
+                    let label = [];
+                    let data = [];
+
+                    {{-- get all data point names and values --}}
+
+                    for (let i = 0; i < dataPointAmount; i++) {
+                        label.push(document.getElementById("dataTextArea" + i).value);
+                    data.push(document.getElementById("dataTextArea2" + i).value);
+
+                }
+
+                let colours = randomInteger(dataPointAmount);
+
+                generateChartJson(chartName, chartType, label, data, colours);
+
+                });
+
+
+
+                function generateChartJson(chartName, chartType, label, data, colours) {
+
+
+                    console.log({
+                        'type': chartType,
+                        'data':{
+                            'labels': label,
+                            'datasets': [{
+                              'label': chartName,
+                              'data': data,
+                              'backgroundColor': colours,
+                              'hoverOffset': 4
+                            }]
+                          }
+                      });
+
+                }
+
+                function randomInteger(amount) {
+                    backgroundColor = [];
+                    for (let i = 0; i <amount; i++){
+                        console.log(`rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`);
+                        backgroundColor.push(`rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`);
+                    }
+                    console.log("sadfsdafdsfds");
+                    console.log(backgroundColor);
+                    console.log("sadfsdafdsfds");
+                    return backgroundColor;
+                }
+
+                function addElement() {
+                    var newDiv = document.createElement('"<input type="text" name="chance" value="xx">"');
+                    document.getElementById('tag-id').innerHTML = '<ol><li>html data</li></ol>';
+
+                }
+
+
+            </script>
+
         </div>
-
-
     </body>
+
     <style>
         .form {
             margin: auto;
@@ -107,6 +199,7 @@
         }
 
     </style>
+
 @endsection
 
 {{-- const config = {
