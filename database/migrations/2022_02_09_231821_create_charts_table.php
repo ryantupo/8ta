@@ -14,10 +14,11 @@ class CreateChartsTable extends Migration
     public function up()
     {
         Schema::create('charts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->String('chart_name');
-            $table->json('config');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->default(1);
+            $table->String('chart_name')->default('chart Name Not Given');
+            $table->String('chart_type')->default('chart Type Not Given');
+            $table->json('config')->default(json_encode(['config','no data given']));
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
