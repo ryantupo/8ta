@@ -4,6 +4,7 @@ use App\Models\Post;
 use App\Models\Chart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\chartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,10 @@ Route::get('/addchart', function(){
         abort(404);
     }
 });
+
+// Route::get('addchart', [chartController::class, 'index']);
+
+Route::post('/addchart',[chartController::class , 'store']);
 
 
 
