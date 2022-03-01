@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class chart extends Model
 {
     use HasFactory;
+    protected $table = 'charts';
+
+    protected $fillable = [
+        'user_id',
+        'chart_name',
+        'config',
+        'updated_at',
+    ];
 
     public function user(){
         return $this->belongsTo(User::class);
