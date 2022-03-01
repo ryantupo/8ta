@@ -11,19 +11,19 @@
         </div>
 
 
-        <div action="" method="post" id="mainForm" class="form">
-            <form method="post" action="{{ route('chart.store') }}">
+        <div id="mainForm" class="form">
+            <form action="/addchart" method="POST">
 
-
+            @csrf
                 <div class="mt-3 form-group">
                     <label for="chartName">Chart Name</label>
-                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name">
+                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName" name="chartName">
                 </div>
 
                 {{-- the type of chart --}}
                 <div class="mt-3 form-group">
                     <label for="charts">Type Of Chart</label>
-                    <select class="form-control" id="chart">
+                    <select class="form-control" id="chart" value="chartType" name="chartType">
                         <option>Pie Chart</option>
                         <option>Line Chart</option>
                     </select>
@@ -33,7 +33,7 @@
                 {{-- the number of data points --}}
                 <div class="mt-3 form-group">
                     <label for="datasets">Amount Of Data Points</label>
-                    <select id="dataset" multiple="multiple" class="form-control">
+                    <select id="dataset" multiple="multiple" class="form-control" value="amountDataPoints" name="amountDataPoints">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -43,13 +43,9 @@
                 </div>
 
                 {{-- data names and values --}}
-                <div id="datasets" class="form-group">
-dfssdf
+                <div id="datasets" class="form-group"></div>
 
-                </div>
-
-
-                <button type="button" class="mt-3 button btn btn-success btn-lg center-block" id="submitBtn">Check it
+                <button type="submit" class="mt-3 button btn btn-success btn-lg center-block" id="submitBtn">Check it
                     out!</button>
 
             </form>
@@ -81,21 +77,31 @@ dfssdf
                         let divL = document.createElement("label"); // Create a new element
                         divL.className = 'mt-3';
                         divL.setAttribute('for', 'DataTextArea');
-                        divL.setAttribute('value', 'Data textarea');
+                        divL.setAttribute('value', 'dataTextAreaL' + i);
+                        divL.setAttribute('name', 'dataTextAreaL' + i); // Change the text of the element
+                        divL.setAttribute('id', 'dataTextAreaL' + i); // Change the text of the element
 
+
+                        //is the data points name
                         let divT = document.createElement("textarea"); // Create a new element
                         divT.className = 'mt-3 form-control';
-                        divT.setAttribute('id', 'dataTextArea' + i); // Change the text of the element
+                        divT.setAttribute('id', 'dataTextAreaD1' + i); // Change the text of the element
+                        divT.setAttribute('name', 'dataTextAreaD1' + i); // Change the text of the element
+
+
                         divT.setAttribute('row', '1');
 
                         let divL2 = document.createElement("label"); // Create a new element
-                        divL.className = 'mt-3';
+                        divL2.className = 'mt-3';
                         divL2.setAttribute('for', 'DataTextArea');
-                        divL2.setAttribute('value', 'Data textarea');
+                        divL2.setAttribute('value', 'dataTextAreaL' + i);
+                        divL2.setAttribute('name', 'dataTextAreaL' + i); // Change the text of the element
 
+                        //data points valuer
                         let divT2 = document.createElement("textarea"); // Create a new element
                         divT2.className = 'mt-3 form-control';
-                        divT2.setAttribute('id', 'dataTextArea2' + i); // Change the text of the element
+                        divT2.setAttribute('id', 'dataTextAreaD2' + i); // Change the text of the element
+                        divT2.setAttribute('name', 'dataTextAreaD2' + i); // Change the text of the element
                         divT2.setAttribute('row', '1');
 
                         divL.appendChild(document.createTextNode("Data Point Name " + (i + 1)));
@@ -173,18 +179,8 @@ dfssdf
                         console.log(`rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`);
                         backgroundColor.push(`rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`);
                     }
-                    console.log("sadfsdafdsfds");
-                    console.log(backgroundColor);
-                    console.log("sadfsdafdsfds");
                     return backgroundColor;
                 }
-
-                function addElement() {
-                    var newDiv = document.createElement('"<input type="text" name="chance" value="xx">"');
-                    document.getElementById('tag-id').innerHTML = '<ol><li>html data</li></ol>';
-
-                }
-
 
             </script>
 
