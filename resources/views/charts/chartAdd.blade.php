@@ -14,18 +14,19 @@
         <div id="mainForm" class="form">
             <form action="/addchart" method="POST">
 
-            @csrf
+                @csrf
                 <div class="mt-3 form-group">
                     <label for="chartName">Chart Name</label>
-                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName" name="chartName">
+                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName"
+                        name="chartName">
                 </div>
 
                 {{-- the type of chart --}}
                 <div class="mt-3 form-group">
                     <label for="charts">Type Of Chart</label>
                     <select class="form-control" id="chart" value="chartType" name="chartType">
-                        <option>Pie Chart</option>
-                        <option>Line Chart</option>
+                        <option>pie</option>
+                        <option>line</option>
                     </select>
                 </div>
 
@@ -33,7 +34,8 @@
                 {{-- the number of data points --}}
                 <div class="mt-3 form-group">
                     <label for="datasets">Amount Of Data Points</label>
-                    <select id="dataset" multiple="multiple" class="form-control" value="amountDataPoints" name="amountDataPoints">
+                    <select id="dataset" multiple="multiple" class="form-control" value="amountDataPoints"
+                        name="amountDataPoints">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -143,13 +145,11 @@
 
                     for (let i = 0; i < dataPointAmount; i++) {
                         label.push(document.getElementById("dataTextArea" + i).value);
-                    data.push(document.getElementById("dataTextArea2" + i).value);
+                        data.push(intval(document.getElementById("dataTextArea2" + i).value));
 
-                }
+                    }
 
-                let colours = randomInteger(dataPointAmount);
-
-                generateChartJson(chartName, chartType, label, data, colours);
+                    let colours = randomInteger(dataPointAmount);
 
                 });
 
@@ -160,28 +160,31 @@
 
                     console.log({
                         'type': chartType,
-                        'data':{
+                        'data': {
                             'labels': label,
                             'datasets': [{
-                              'label': chartName,
-                              'data': data,
-                              'backgroundColor': colours,
-                              'hoverOffset': 4
+                                'label': chartName,
+                                'data': data,
+                                'backgroundColor': colours,
+                                'hoverOffset': 4
                             }]
-                          }
-                      });
+                        }
+                    });
 
                 }
 
                 function randomInteger(amount) {
                     backgroundColor = [];
-                    for (let i = 0; i <amount; i++){
-                        console.log(`rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`);
-                        backgroundColor.push(`rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`);
+                    for (let i = 0; i < amount; i++) {
+                        console.log(
+                            `rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`
+                            );
+                        backgroundColor.push(
+                            `rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`
+                            );
                     }
                     return backgroundColor;
                 }
-
             </script>
 
         </div>
@@ -195,7 +198,6 @@
         }
 
     </style>
-
 @endsection
 
 {{-- const config = {
