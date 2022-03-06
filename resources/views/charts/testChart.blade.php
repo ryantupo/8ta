@@ -14,7 +14,7 @@
             <h1 class="mx-auto pt-5" style="width: 200px;">Test Chart</h1>
         </div>
 
-        <div style="width: 60%; height:60%; margin:auto;">
+        <div class="adjust-me-based-on-size">
             <canvas id="myChart"></canvas>
         </div>
 
@@ -35,4 +35,24 @@
                 </script>
 
     </body>
+
+    <style>
+        .adjust-me-based-on-size{
+            width: 600px;
+            height:600px;
+            margin: auto;
+          }
+          @media only screen and (min-width: 800) and (max-width: 1200) {
+            .adjust-me-based-on-size {
+                width: 500px;
+                height: 500px;
+            }
+          }
+          @media only screen and (max-width: 800px) {
+            .adjust-me-based-on-size {
+                width: 300px;
+                height: 300px;
+            }
+          }
+    </style>
 @endsection
