@@ -50,6 +50,13 @@
           }
           @media only screen and (max-width: 800px) {
             .adjust-me-based-on-size {
+                width: 400px;
+                height: 400px;
+            }
+          }
+
+          @media only screen and (max-width: 400px) {
+            .adjust-me-based-on-size {
                 width: 300px;
                 height: 300px;
             }
