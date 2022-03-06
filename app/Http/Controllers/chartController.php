@@ -39,7 +39,7 @@ class chartController extends Controller
             array_push($data, $request->input("dataTextAreaD2" . strval($i)));
             // Returns a hex code for a 'truly random' color
             array_push($colours, RandomColor::one(array(
-                'luminosity' => 'random',
+                'luminosity' => 'light',
                 'hue' => 'random',
                 'format' => 'rgbCss',
             )));
