@@ -47,25 +47,25 @@
                 {{-- data names and values --}}
                 <div id="datasets" class="form-group"></div>
 
-                <button type="submit" class="mt-3 button btn btn-success btn-lg center-block" id="submitBtn">Check it
-                    out!</button>
+                <button style="margin:auto;" type="submit" class="mt-3 button btn btn-success btn-lg center-block" id="submitBtn">Add Chart</button>
 
             </form>
 
 
             <script type="text/javascript">
                 //get the amount of data sets in the chart
-                $("#dataset option").click(function() {
-                    var value = $(this).attr("value");
-                    console.log(value);
 
-                    //seems like there is no built in funciton's but in jquery
+                document.getElementById('dataset').addEventListener('change', function() {
+
+                    //console.log('You selected: ', this.value);
+
+                    //wipe excisting data point inputs
                     $(datasets).empty();
-                    makeData(value);
 
-
-
+                    //generate the inputs for data points
+                    makeData(this.value);
                 });
+
 
 
                 function clearBox(elementID) {
@@ -89,8 +89,6 @@
                         divT.className = 'mt-3 form-control';
                         divT.setAttribute('id', 'dataTextAreaD1' + i); // Change the text of the element
                         divT.setAttribute('name', 'dataTextAreaD1' + i); // Change the text of the element
-
-
                         divT.setAttribute('row', '1');
 
                         let divL2 = document.createElement("label"); // Create a new element
@@ -100,11 +98,16 @@
                         divL2.setAttribute('name', 'dataTextAreaL' + i); // Change the text of the element
 
                         //data points valuer
-                        let divT2 = document.createElement("textarea"); // Create a new element
+                        let divT2 = document.createElement("input"); // Create a new element
                         divT2.className = 'mt-3 form-control';
                         divT2.setAttribute('id', 'dataTextAreaD2' + i); // Change the text of the element
                         divT2.setAttribute('name', 'dataTextAreaD2' + i); // Change the text of the element
                         divT2.setAttribute('row', '1');
+                        divT2.setAttribute('min', '0'); // Change the text of the element
+                        divT2.setAttribute('step', '1'); // Change the text of the element
+                        divT2.setAttribute('data-bind', 'value:' + 'dataTextAreaD2' + i); // Change the text of the element
+                        divT2.setAttribute('type', 'number'); // Change the text of the element
+
 
                         divL.appendChild(document.createTextNode("Data Point Name " + (i + 1)));
                         divL2.appendChild(document.createTextNode("Data Point Value " + (i + 1)));
@@ -178,10 +181,10 @@
                     for (let i = 0; i < amount; i++) {
                         console.log(
                             `rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`
-                            );
+                        );
                         backgroundColor.push(
                             `rgb(${Math.floor(Math.random()*(255 + 1))} , ${Math.floor(Math.random()*(255 + 1))}, ${Math.floor(Math.random()*(255 + 1))})`
-                            );
+                        );
                     }
                     return backgroundColor;
                 }
