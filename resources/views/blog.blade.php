@@ -15,7 +15,6 @@
         </div>
 
         @foreach ($posts as $post)
-
             <a href="/blog/{{ $post->slug }}">
                 <article class="thing" style="width: 60%; margin: 0 auto; margin-top: 1.5rem; padding-bottom: 3rem">
 
@@ -27,9 +26,7 @@
 
                 </article>
             </a>
-
         @endforeach
 
     </body>
-
 @endsection
