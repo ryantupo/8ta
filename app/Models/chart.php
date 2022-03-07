@@ -12,6 +12,7 @@ class Chart extends Model
 
     protected $fillable = [
         'user_id',
+        'id',
         'chart_name',
         'config',
         'updated_at',
