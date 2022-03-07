@@ -66,6 +66,7 @@ Route::get('/addchart', function(){
 Route::post('/addchart',[chartController::class , 'store']);
 
 
+Route::post('/deletechart/{id}',[chartController::class , 'delete']);
 
 //route for testing error pages
 Route::get('/error', function () {
