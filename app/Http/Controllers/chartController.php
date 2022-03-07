@@ -84,6 +84,23 @@ class chartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function delete($id)
+    {
+        $query = DB::table('charts')->where('user_id', '=', Auth::user()->id)->where('id', '=', $id)->delete();
+
+        if ($query) {
+            return back()->with('success', 'Chart has been successfully deleted');
+        } else {
+            return back()->with('fail', 'Something went wrong');
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         //
