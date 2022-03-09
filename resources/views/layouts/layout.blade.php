@@ -419,6 +419,9 @@
 
 </style>
 
+<!-- libraries -->
+<script src="https://kit.fontawesome.com/901630e084.js" crossorigin="anonymous"></script>
+
 <style>
     .thing {
         padding: 1rem;
