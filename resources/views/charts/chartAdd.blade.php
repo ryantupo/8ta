@@ -17,7 +17,7 @@
                 @csrf
                 <div class="mt-3 form-group">
                     <label for="chartName">Chart Name</label>
-                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName"
+                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName" maxlength="18"
                         name="chartName">
                 </div>
 
