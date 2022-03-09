@@ -15,6 +15,7 @@ class Chart extends Model
         'id',
         'chart_name',
         'config',
+        'if_favourite',
         'updated_at',
     ];
 
