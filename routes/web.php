@@ -37,7 +37,7 @@ Route::get('/favourites', function (Chart $chart) {
     if (Auth::check()) {
         $id = Auth::user()->id;
         return view('charts/favouriteCharts', [
-            'chart' => Chart::where('user_id', $id)->take(9)->get(),
+            'chart' => Chart::where('user_id', $id)->orderBy('if_favourite', 'DESC')->take(9)->get(),
         ]);
     } else {
         abort(404);
