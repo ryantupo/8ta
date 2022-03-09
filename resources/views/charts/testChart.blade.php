@@ -10,11 +10,13 @@
 
         </div>
 
-        <div>
-            <h1 class="mx-auto pt-5" style="width: 200px;">Test Chart</h1>
-        </div>
 
         <div class="adjust-me-based-on-size">
+
+            <div>
+                <h1 class="mx-auto pt-5" style="width: 50%;text-align:center;">{{ $chart->chart_name }}</h1>
+            </div>
+
             <canvas id="myChart"></canvas>
         </div>
 
@@ -37,29 +39,32 @@
     </body>
 
     <style>
-        .adjust-me-based-on-size{
+        .adjust-me-based-on-size {
             width: 600px;
-            height:600px;
+            height: 600px;
             margin: auto;
-          }
-          @media only screen and (min-width: 800) and (max-width: 1200) {
+        }
+
+        @media only screen and (min-width: 800) and (max-width: 1200) {
             .adjust-me-based-on-size {
                 width: 500px;
                 height: 500px;
             }
-          }
-          @media only screen and (max-width: 800px) {
+        }
+
+        @media only screen and (max-width: 800px) {
             .adjust-me-based-on-size {
                 width: 400px;
                 height: 400px;
             }
-          }
+        }
 
-          @media only screen and (max-width: 400px) {
+        @media only screen and (max-width: 400px) {
             .adjust-me-based-on-size {
                 width: 300px;
                 height: 300px;
             }
-          }
+        }
+
     </style>
 @endsection
