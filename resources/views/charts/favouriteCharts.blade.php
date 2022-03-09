@@ -11,7 +11,7 @@
 
         </div>
 
-        <div class="drag-list" style="border: none;border-style: none;">
+        <div class="drag-list" style="border: none;border-style: none; margin-left:15%;">
 
             <?php try{ ?>
             <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
