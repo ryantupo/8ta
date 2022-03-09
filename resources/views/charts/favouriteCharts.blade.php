@@ -18,7 +18,7 @@
                 style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
 
 
-                <div class="adjust-me-based-on-size">
+                <div style="margin-top:-40px;" class="adjust-me-based-on-size">
 
                     <div>
                         <h1 class="mx-auto pt-1" style="width: 70%;text-align:center;font-size: x-small;">
