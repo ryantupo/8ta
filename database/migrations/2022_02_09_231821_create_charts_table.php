@@ -19,6 +19,7 @@ class CreateChartsTable extends Migration
             $table->String('chart_name')->default('chart Name Not Given');
             $table->String('chart_type')->default('chart Type Not Given');
             $table->json('config')->default(json_encode(['config','no data given']));
+            $table->boolean('if_favourite')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
