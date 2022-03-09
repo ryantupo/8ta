@@ -11,10 +11,11 @@
 
         </div>
 
-        <div class="drag-list" style="border: none;border-style: none; margin-left:15%;">
+        <div class="drag-list" id="chartBox0" style="border: none;border-style: none; margin-left:15%;">
 
             <?php try{ ?>
-            <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+            <div class="drag-item" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
 
 
                 <div class="adjust-me-based-on-size">
@@ -48,10 +49,17 @@
             </div>
             <?php }catch(\Exception $e){ ?>
 
+                echo '<style type="text/css">
+                    #chartBox0 {
+                        display: none;
+                    }
+                    </style>';
+
             <?php } ?>
 
             <?php try{ ?>
-            <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+            <div class="drag-item" id="chartBox1" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
                 <div class="adjust-me-based-on-size">
                     <div>
                         <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
@@ -77,11 +85,18 @@
                 </div>
             </div>
             <?php }catch(\Exception $e){ ?>
+D
+                echo '<style type="text/css">
+                    #chartBox1 {
+                        display: none;
+                    }
+                    </style>';
 
             <?php } ?>
 
             <?php try{ ?>
-            <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+            <div class="drag-item" id="chartBox2" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
                 <div class="adjust-me-based-on-size">
                     <div>
                         <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
@@ -108,10 +123,17 @@
             </div>
             <?php }catch(\Exception $e){ ?>
 
+                echo '<style type="text/css">
+                    #chartBox2 {
+                        display: none;
+                    }
+                    </style>';
+
             <?php } ?>
 
             <?php try{ ?>
-            <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+            <div class="drag-item" id="chartBox3"  draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
                 <div class="adjust-me-based-on-size">
                     <div>
                         <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
@@ -138,10 +160,17 @@
             </div>
             <?php }catch(\Exception $e){ ?>
 
+                echo '<style type="text/css">
+                    #chartBox3 {
+                        display: none;
+                    }
+                    </style>';
+
             <?php } ?>
 
             <?php try{ ?>
-            <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+            <div class="drag-item" id="chartBox4" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
                 <div class="adjust-me-based-on-size">
                     <div>
                         <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
@@ -168,11 +197,18 @@
             </div>
             <?php }catch(\Exception $e){ ?>
 
+                echo '<style type="text/css">
+                    #chartBox4 {
+                        display: none;
+                    }
+                    </style>';
+
             <?php } ?>
 
 
             <?php try{ ?>
-            <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+            <div class="drag-item" id="chartBox5" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
                 <div class="adjust-me-based-on-size">
                     <div>
                         <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
@@ -199,99 +235,130 @@
             </div>
             <?php }catch(\Exception $e){ ?>
 
+
+                echo '<style type="text/css">
+                    #chartBox5 {
+                        display: none;
+                    }
+                    </style>';
+
             <?php } ?>
 
             <?php try{ ?>
-                <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
-                    <div class="adjust-me-based-on-size">
-                        <div>
-                            <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
-                                {{ $chart[6]->chart_name }}</h1>
-                        </div>
-                        <canvas id="myChart6"></canvas>
+            <div class="drag-item" id="chartBox6" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+                <div class="adjust-me-based-on-size">
+                    <div>
+                        <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
+                            {{ $chart[6]->chart_name }}</h1>
                     </div>
-                    <div id="chart6" data-type="{{ $chart[6]->config }}">
-                        <div>
-                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                            <script>
-                                var elem = document.getElementById('chart6');
-                                var config = JSON.parse(elem.getAttribute('data-type'));
-                            </script>
+                    <canvas id="myChart6"></canvas>
+                </div>
+                <div id="chart6" data-type="{{ $chart[6]->config }}">
+                    <div>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+                            var elem = document.getElementById('chart6');
+                            var config = JSON.parse(elem.getAttribute('data-type'));
+                        </script>
 
-                            <script>
-                                const myChart6 = new Chart(
-                                    document.getElementById('myChart6'),
-                                    config
-                                );
-                            </script>
-                        </div>
+                        <script>
+                            const myChart6 = new Chart(
+                                document.getElementById('myChart6'),
+                                config
+                            );
+                        </script>
                     </div>
                 </div>
-                <?php }catch(\Exception $e){ ?>
+            </div>
+            <?php }catch(\Exception $e){ ?>
 
-                <?php } ?>
+
+                echo '<style type="text/css">
+                    #chartBox6 {
+                        display: none;
+                    }
+                    </style>';
+
+            <?php } ?>
 
 
-                <?php try{ ?>
-                    <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
-                        <div class="adjust-me-based-on-size">
-                            <div>
-                                <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
-                                    {{ $chart[7]->chart_name }}</h1>
-                            </div>
-                            <canvas id="myChart7"></canvas>
-                        </div>
-                        <div id="chart7" data-type="{{ $chart[7]->config }}">
-                            <div>
-                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                <script>
-                                    var elem = document.getElementById('chart7');
-                                    var config = JSON.parse(elem.getAttribute('data-type'));
-                                </script>
-
-                                <script>
-                                    const myChart7 = new Chart(
-                                        document.getElementById('myChart7'),
-                                        config
-                                    );
-                                </script>
-                            </div>
-                        </div>
+            <?php try{ ?>
+            <div class="drag-item" id="chartBox7" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+                <div class="adjust-me-based-on-size">
+                    <div>
+                        <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
+                            {{ $chart[7]->chart_name }}</h1>
                     </div>
-                    <?php }catch(\Exception $e){ ?>
+                    <canvas id="myChart7"></canvas>
+                </div>
+                <div id="chart7" data-type="{{ $chart[7]->config }}">
+                    <div>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+                            var elem = document.getElementById('chart7');
+                            var config = JSON.parse(elem.getAttribute('data-type'));
+                        </script>
 
-                    <?php } ?>
+                        <script>
+                            const myChart7 = new Chart(
+                                document.getElementById('myChart7'),
+                                config
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <?php }catch(\Exception $e){ ?>
 
 
-                    <?php try{ ?>
-                        <div class="drag-item" draggable="false" style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
-                            <div class="adjust-me-based-on-size">
-                                <div>
-                                    <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
-                                        {{ $chart[8]->chart_name }}</h1>
-                                </div>
-                                <canvas id="myChart8"></canvas>
-                            </div>
-                            <div id="chart8" data-type="{{ $chart[8]->config }}">
-                                <div>
-                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                    <script>
-                                        var elem = document.getElementById('chart8');
-                                        var config = JSON.parse(elem.getAttribute('data-type'));
-                                    </script>
+                echo '<style type="text/css">
+                    #chartBox7 {
+                        display: none;
+                    }
+                    </style>';
 
-                                    <script>
-                                        const myChart8 = new Chart(
-                                            document.getElementById('myChart8'),
-                                            config
-                                        );
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                        <?php }catch(\Exception $e){ ?>
+            <?php } ?>
 
-                        <?php } ?>
+
+            <?php try{ ?>
+            <div class="drag-item" id="chartBox8" draggable="false"
+                style="margin:10px;box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;">
+                <div class="adjust-me-based-on-size">
+                    <div>
+                        <h1 class="mx-auto" style="width: 70%;text-align:center;font-size: x-small;margin-top:-35px">
+                            {{ $chart[8]->chart_name }}</h1>
+                    </div>
+                    <canvas id="myChart8"></canvas>
+                </div>
+                <div id="chart8" data-type="{{ $chart[8]->config }}">
+                    <div>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+                            var elem = document.getElementById('chart8');
+                            var config = JSON.parse(elem.getAttribute('data-type'));
+                        </script>
+
+                        <script>
+                            const myChart8 = new Chart(
+                                document.getElementById('myChart8'),
+                                config
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <?php }catch(\Exception $e){ ?>
+
+                echo '<style type="text/css">
+                    #chartBox8 {
+                        display: none;
+                    }
+                    </style>';
+
+            <?php } ?>
+
 
 
 
