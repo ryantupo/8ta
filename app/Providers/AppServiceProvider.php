@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
                 $countcharts = chart::where('user_id', Auth::user()->id)->count();
                 // $userchartIds = chart::where('user_id', Auth::user()->id)->get(['id']);
-                $usercharts = chart::where('user_id', Auth::user()->id)->get(['id', 'chart_name']);
+                $usercharts = chart::where('user_id', Auth::user()->id)->orderBy('if_favourite', 'DESC')->get(['id', 'chart_name', 'if_favourite']);
 
                 //...with this variable
                 $view->with('countcharts', $countcharts);
