@@ -95,6 +95,20 @@ class chartController extends Controller
         }
     }
 
+    public function favourite($id)
+    {
+
+        $original_val = DB::table('charts')->where('user_id', '=', Auth::user()->id)->where('id', $id)->get(['if_favourite']);
+
+        $query = DB::table('charts')->where('user_id', '=', Auth::user()->id)->where('id', $id)->update(array('if_favourite' => !$original_val));
+
+        if ($query) {
+            return back()->with('success', 'Chart has been successfully deleted');
+        } else {
+            return back()->with('fail', 'Something went wrong');
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
