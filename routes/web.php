@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Post;
+use App\Http\Controllers\chartController;
 use App\Models\Chart;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\chartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +33,18 @@ Route::get('/blog', function () {
 
 });
 
+Route::get('/favourites', function (Chart $chart) {
+    if (Auth::check()) {
+        $id = Auth::user()->id;
+        return view('charts/favouriteCharts', [
+            'chart' => Chart::where('user_id', $id)->take(9)->get(),
+        ]);
+    } else {
+        abort(404);
+    }
+
+});
+
 Route::get('/blog/{post:slug}', function (Post $post) {
 
     return view('blogpost', [
@@ -44,33 +56,29 @@ Route::get('/blog/{post:slug}', function (Post $post) {
 Route::get('/chart/{chart:id}', function (Chart $chart) {
     if (Auth::check()) {
         $id = Auth::user()->id;
-        return view('charts/testChart',[
-            'chart' => chart::where('user_id', $id )->where('id', $chart->id)->first()
+        return view('charts/testChart', [
+            'chart' => chart::where('user_id', $id)->where('id', $chart->id)->first(),
         ]);
-    }else{
+    } else {
         abort(404);
     }
 });
 
-
-Route::get('/addchart', function(){
+Route::get('/addchart', function () {
     if (Auth::check()) {
         return view('charts/chartAdd');
-    }else{
+    } else {
         abort(404);
     }
 });
 
 // Route::get('addchart', [chartController::class, 'index']);
 
-Route::post('/addchart',[chartController::class , 'store']);
+Route::post('/addchart', [chartController::class, 'store']);
 
-
-Route::post('/deletechart/{id}',[chartController::class , 'delete']);
+Route::post('/deletechart/{id}', [chartController::class, 'delete']);
 
 //route for testing error pages
 Route::get('/error', function () {
     abort(500);
 });
-
-
