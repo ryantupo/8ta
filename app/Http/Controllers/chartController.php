@@ -45,35 +45,44 @@ class chartController extends Controller
             )));
         }
 
-        // function generateChartJson(chartName, chartType, label, data, colours) {
+        if($chartName == ""){
+            return back()->with('fail', 'Chart was not named');
+        }
 
-        $datasets = new stdClass();
-        $datasets->label = $chartName;
-        $datasets->data = $data;
-        $datasets->backgroundColor = $colours;
-        $datasets->hoverOffset = 4;
+        if (count($labels) == $request->input('amountDataPoints') && count($data) == $request->input('amountDataPoints')) {
 
-        $datasetsArray = [];
+            // function generateChartJson(chartName, chartType, label, data, colours) {
 
-        array_push($datasetsArray, $datasets);
+            $datasets = new stdClass();
+            $datasets->label = $chartName;
+            $datasets->data = $data;
+            $datasets->backgroundColor = $colours;
+            $datasets->hoverOffset = 4;
 
-        $data = new stdClass();
-        $data->labels = $labels;
-        $data->datasets = $datasetsArray;
+            $datasetsArray = [];
 
-        $config = json_encode(array(
-            'type' => $chartType,
-            'data' => $data)
-        );
+            array_push($datasetsArray, $datasets);
 
-        $query = DB::table('charts')->insert(
-            ['user_id' => Auth::user()->id, 'chart_name' => $chartName, 'chart_type' => $chartType, 'config' => $config]
-        );
+            $data = new stdClass();
+            $data->labels = $labels;
+            $data->datasets = $datasetsArray;
 
-        if ($query) {
-            return back()->with('success', 'Chart has been successfully added');
+            $config = json_encode(array(
+                'type' => $chartType,
+                'data' => $data)
+            );
+
+            $query = DB::table('charts')->insert(
+                ['user_id' => Auth::user()->id, 'chart_name' => $chartName, 'chart_type' => $chartType, 'config' => $config]
+            );
+
+            if ($query) {
+                return back()->with('success', 'Chart has been successfully added');
+            } else {
+                return back()->with('fail', 'Something went wrong');
+            }
         } else {
-            return back()->with('fail', 'Something went wrong');
+            return back()->with('fail', 'Data Entered incorrectly');
         }
 
     }
