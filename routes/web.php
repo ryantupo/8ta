@@ -72,17 +72,11 @@ Route::get('/addchart', function () {
     }
 });
 
-// Route::get('addchart', [chartController::class, 'index']);
-
 Route::post('/addchart', [chartController::class, 'store']);
 
 Route::post('/deletechart/{id}', [chartController::class, 'delete']);
 
 Route::post('/favouriteChart/{id}', [chartController::class, 'favourite']);
-
-
-
-
 
 //route for testing error pages
 Route::get('/error', function () {
