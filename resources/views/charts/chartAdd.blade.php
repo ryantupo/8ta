@@ -18,7 +18,7 @@
                 <div class="mt-3 form-group">
                     <label for="chartName">Chart Name</label>
                     <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName" maxlength="18"
-                        name="chartName">
+                        name="chartName" required>
                 </div>
 
                 {{-- the type of chart --}}
@@ -90,6 +90,8 @@
                         divT.setAttribute('id', 'dataTextAreaD1' + i); // Change the text of the element
                         divT.setAttribute('name', 'dataTextAreaD1' + i); // Change the text of the element
                         divT.setAttribute('row', '1');
+                        divT.setAttribute('required',"");
+
 
                         let divL2 = document.createElement("label"); // Create a new element
                         divL2.className = 'mt-3';
@@ -104,9 +106,11 @@
                         divT2.setAttribute('name', 'dataTextAreaD2' + i); // Change the text of the element
                         divT2.setAttribute('row', '1');
                         divT2.setAttribute('min', '0'); // Change the text of the element
-                        divT2.setAttribute('step', '1'); // Change the text of the element
+                        divT2.setAttribute('step', '0.0001'); // Change the text of the element
                         divT2.setAttribute('data-bind', 'value:' + 'dataTextAreaD2' + i); // Change the text of the element
                         divT2.setAttribute('type', 'number'); // Change the text of the element
+                        divT2.setAttribute('required',"");
+
 
 
                         divL.appendChild(document.createTextNode("Data Point Name " + (i + 1)));
