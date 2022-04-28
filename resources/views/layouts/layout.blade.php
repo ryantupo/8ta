@@ -422,6 +422,9 @@
 <!-- libraries -->
 <script src="https://kit.fontawesome.com/901630e084.js" crossorigin="anonymous"></script>
 
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 <style>
     .thing {
         padding: 1rem;
