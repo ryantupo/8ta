@@ -102,7 +102,7 @@
                                 class="fa-solid fa-user"></i></a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"><i
-                                class="fa-solid fa-right-to-bracket fa-shake"></i></a>
+                                class="fa-solid fa-right-to-bracket"></i></a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
