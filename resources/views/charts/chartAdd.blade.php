@@ -17,8 +17,8 @@
                 @csrf
                 <div class="mt-3 form-group">
                     <label for="chartName">Chart Name</label>
-                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName" maxlength="18"
-                        name="chartName" required>
+                    <input type="text" class="form-control" id="chartName" placeholder="Enter Chart Name" value="chartName"
+                        maxlength="18" name="chartName" required>
                 </div>
 
                 {{-- the type of chart --}}
@@ -30,9 +30,28 @@
                     </select>
                 </div>
 
+                {{--  depricated  --}}
+                {{-- <input type="checkbox" id="toggle" class=""> --}}
 
-                {{-- the number of data points --}}
+                {{--  <div class="control-me">
+                    <div class="mt-3 form-group">
+                        <label for="chartJsonData">Data Key Value Pairs</label>
+                        <input type="text" class="form-control" id="chartJsonData"
+                            placeholder="{age1:16, age2:31, age3:12}" maxlength="230" value="chartJsonData"
+                            name="chartJsonData" required>
+                    </div>
+                </div>  --}}
+
                 <div class="mt-3 form-group">
+                    <p style="font-size: 12px;" for="chartJsonData">Example of formatter Json -> {"YjKMR":271,"WYox6":939,"BG1VE":406,"2ULc1":917} <- </p>
+                    <label for="chartJsonData">chartJsonData</label>
+                    <input type="text" class="form-control" id="chartJsonData" placeholder="Enter Chart json data"
+                        value='{}'  name="chartJsonData" required>
+                </div>
+
+                {{--  depricated code  --}}
+                {{-- the number of data points --}}
+                {{--  <div class="mt-3 form-group">
                     <label for="datasets">Amount Of Data Points</label>
                     <select id="dataset" multiple="multiple" class="form-control" value="amountDataPoints"
                         name="amountDataPoints">
@@ -42,12 +61,13 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                </div>
+                </div>  --}}
 
                 {{-- data names and values --}}
                 <div id="datasets" class="form-group"></div>
 
-                <button style="margin:auto;" type="submit" class="mt-3 button btn btn-success btn-lg center-block" id="submitBtn">Add Chart</button>
+                <button style="margin:auto;" type="submit" class="mt-3 button btn btn-success btn-lg center-block"
+                    id="submitBtn">Add Chart</button>
 
             </form>
 
@@ -90,7 +110,7 @@
                         divT.setAttribute('id', 'dataTextAreaD1' + i); // Change the text of the element
                         divT.setAttribute('name', 'dataTextAreaD1' + i); // Change the text of the element
                         divT.setAttribute('row', '1');
-                        divT.setAttribute('required',"");
+                        divT.setAttribute('required', "");
 
 
                         let divL2 = document.createElement("label"); // Create a new element
@@ -109,7 +129,7 @@
                         divT2.setAttribute('step', '0.0001'); // Change the text of the element
                         divT2.setAttribute('data-bind', 'value:' + 'dataTextAreaD2' + i); // Change the text of the element
                         divT2.setAttribute('type', 'number'); // Change the text of the element
-                        divT2.setAttribute('required',"");
+                        divT2.setAttribute('required', "");
 
 
 
@@ -139,6 +159,19 @@
                     console.log(document.getElementById("chart").value);
                     let chartType = document.getElementById("chart").value;
 
+                    {{-- json data --}}
+                    console.log(document.getElementById("chartJsonData").value);
+                    let chartJsonData = document.getElementById("chartJsonData").value;
+
+
+                    if (document.getElementById('toggle').checked) {
+                        //I am checked
+                    } else {
+
+
+
+
+                    }
 
                     {{-- amount of data sets --}}
                     console.log(document.getElementById("dataset").value);
@@ -202,6 +235,70 @@
             margin: auto;
             margin-top: 50px;
             width: 50%;
+        }
+
+        .label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            color: #394a56;
+        }
+
+        .label-text {
+            margin-left: 16px;
+        }
+
+        .toggle {
+            margin-left: 15px;
+            margin-right: 15px;
+            isolation: isolate;
+            position: relative;
+            height: 30px;
+            width: 100px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow:
+                -8px -4px 8px 0px #ffffff,
+                8px 4px 12px 0px #d1d9e6,
+                4px 4px 4px 0px #d1d9e6 inset,
+                -4px -4px 4px 0px #ffffff inset;
+        }
+
+        .toggle-state {
+            display: none;
+        }
+
+        .indicator {
+            height: 100%;
+            width: 200%;
+            background: #ecf0f3;
+            border-radius: 15px;
+            transform: translate3d(-75%, 0, 0);
+            transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+            box-shadow:
+                -8px -4px 8px 0px #ffffff,
+                8px 4px 12px 0px #d1d9e6;
+        }
+
+        .toggle-state:checked~.indicator {
+            transform: translate3d(25%, 0, 0);
+        }
+
+
+
+        #toggle:checked~.control-me {
+            display: none;
+            /*this works*/
+        }
+
+        #toggle:~.control-me {
+            visibility: visible;
+            /*this works*/
+        }
+
+        #toggle:checked~.value {
+            display: none;
+            /*this does not work*/
         }
 
     </style>
