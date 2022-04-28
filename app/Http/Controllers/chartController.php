@@ -33,23 +33,43 @@ class chartController extends Controller
         $colours = array();
         $chartName = $request->input('chartName');
         $chartType = $request->input('chartType');
+        $chartJsonData = $request->input('chartJsonData');
+        $chartJsonData = json_decode($chartJsonData, true);
 
-        for ($i = 0; $i < $request->input('amountDataPoints'); $i++) {
-            array_push($labels, $request->input("dataTextAreaD1" . strval($i)));
-            array_push($data, $request->input("dataTextAreaD2" . strval($i)));
-            // Returns a hex code for a 'truly random' color
-            array_push($colours, RandomColor::one(array(
-                'luminosity' => 'light',
-                'hue' => 'random',
-                'format' => 'rgbCss',
-            )));
+        try {
+            foreach ($chartJsonData as $key => $value) {
+                array_push($labels, $key);
+                array_push($data, $value);
+                // Returns a hex code for a 'truly random' color
+                array_push($colours, RandomColor::one(array(
+                    'luminosity' => 'light',
+                    'hue' => 'random',
+                    'format' => 'rgbCss',
+                )));
+            }
+
+        } catch (Exception $e) {
+            echo($e);
         }
 
-        if($chartName == ""){
+        //depricated code
+
+        // for ($i = 0; $i < $request->input('amountDataPoints'); $i++) {
+        //     array_push($labels, $request->input("dataTextAreaD1" . strval($i)));
+        //     array_push($data, $request->input("dataTextAreaD2" . strval($i)));
+        //     // Returns a hex code for a 'truly random' color
+        //     array_push($colours, RandomColor::one(array(
+        //         'luminosity' => 'light',
+        //         'hue' => 'random',
+        //         'format' => 'rgbCss',
+        //     )));
+        // }
+
+        if ($chartName == "") {
             return back()->with('fail', 'Chart was not named');
         }
 
-        if (count($labels) == $request->input('amountDataPoints') && count($data) == $request->input('amountDataPoints')) {
+        if (count($labels) > 0 && count($data) > 0) {
 
             // function generateChartJson(chartName, chartType, label, data, colours) {
 
@@ -84,6 +104,44 @@ class chartController extends Controller
         } else {
             return back()->with('fail', 'Data Entered incorrectly');
         }
+
+        //depricated code
+        // if (count($labels) == $request->input('amountDataPoints') && count($data) == $request->input('amountDataPoints')) {
+
+        //     // function generateChartJson(chartName, chartType, label, data, colours) {
+
+        //     $datasets = new stdClass();
+        //     $datasets->label = $chartName;
+        //     $datasets->data = $data;
+        //     $datasets->backgroundColor = $colours;
+        //     $datasets->hoverOffset = 4;
+
+        //     $datasetsArray = [];
+
+        //     array_push($datasetsArray, $datasets);
+
+        //     $data = new stdClass();
+        //     $data->labels = $labels;
+        //     $data->datasets = $datasetsArray;
+
+        //     $config = json_encode(array(
+        //         'type' => $chartType,
+        //         'data' => $data)
+        //     );
+
+        //     $query = DB::table('charts')->insert(
+        //         ['user_id' => Auth::user()->id, 'chart_name' => $chartName, 'chart_type' => $chartType, 'config' => $config]
+        //     );
+
+        //     if ($query) {
+        //         return back()->with('success', 'Chart has been successfully added');
+        //     } else {
+        //         return back()->with('fail', 'Something went wrong');
+        //     }
+        // } else {
+        //     dd("error happened");
+        //     return back()->with('fail', 'Data Entered incorrectly');
+        // }
 
     }
 
