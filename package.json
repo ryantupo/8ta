@@ -33,6 +33,7 @@
         "@interactjs/dev-tools": "^1.10.11",
         "@interactjs/interact": "^1.10.11",
         "@interactjs/modifiers": "^1.10.11",
+        "bootstrap-toggle": "^2.2.2",
         "bootstrap-vue": "^2.21.2",
         "gridly": "^1.5.0",
         "interactjs": "^1.10.11",
