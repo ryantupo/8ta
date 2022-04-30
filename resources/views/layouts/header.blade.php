@@ -61,8 +61,8 @@
                                             <form method="POST" id="favourite-form"
                                                 action="/favouriteChart/{{ $data['id'] }}">
                                                 {{ csrf_field() }}
-                                                <button style="margin:auto;padding-right:15px;" name="_methodFavourite" value="post"
-                                                    type="submit">
+                                                <button style="margin:auto;padding-right:15px;" name="_methodFavourite"
+                                                    value="post" type="submit">
 
                                                     @if ($data['if_favourite'] == 1)
                                                         <span style="color: goldenrod;">
@@ -70,9 +70,7 @@
                                                             <i color:yellow; class="fa-solid fa-star"></i>
 
                                                         </span>
-
                                                     @else
-
                                                         <i color:yellow; class="fa-solid fa-star"></i>
                                                     @endif
                                                 </button>
@@ -83,12 +81,12 @@
                             @endforeach
                         </div>
                     </div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/addchart">+</a>
+                </li>
         </div>
         </li>
 
-        <li class="nav-item active">
-            <a class="nav-link" href="/addchart">+</a>
-        </li>
     @endauth
     </ul>
     </div>
