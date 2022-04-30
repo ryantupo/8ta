@@ -426,6 +426,15 @@
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <style>
+
+    html, body, {
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+    }
+
     .thing {
         padding: 1rem;
         width: 420px;
