@@ -36,7 +36,7 @@
                         {"YjKMR":271,"WYox6":939,"BG1VE":406,"2ULc1":917} <- </p>
                             <label for="chartJsonData">chartJsonData</label>
                             <input type="text" class="form-control" id="chartJsonData" placeholder="Enter Chart json data"
-                                value='{}' name="chartJsonData" required>
+                                value='{}' name="chartJsonData" maxlength="850" required>
                 </div>
 
                 {{-- data names and values --}}
