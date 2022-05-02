@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <body style="padding-bottom:250px;width:100%;">
+    <body style="padding-bottom:25px;width:100%;">
 
         <div id="main" class="row">
 
