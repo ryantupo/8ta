@@ -447,7 +447,7 @@
             Step by Step guide
         </h1>
 
-        <div class="video-container" style="overflow: hidden;">
+        <div class="video-container" style="overflow: auto;">
 
 
             <video width="70%" height="750" controls>
