@@ -72,11 +72,24 @@ Route::get('/addchart', function () {
     }
 });
 
+Route::get('editchart/{chart:id}', function (Chart $chart) {
+    if (Auth::check()) {
+        $id = Auth::user()->id;
+        return view('charts/editchart', [
+            'chart' => chart::where('user_id', $id)->where('id', $chart->id)->first(),
+            'chart_id' => $chart->id]);
+    } else {
+        abort(404);
+    }
+});
+
 Route::post('/addchart', [chartController::class, 'store']);
 
 Route::post('/deletechart/{id}', [chartController::class, 'delete']);
 
 Route::post('/favouriteChart/{id}', [chartController::class, 'favourite']);
+
+Route::post('editchart/{id}', [chartController::class, 'update']);
 
 //route for testing error pages
 Route::get('/error', function () {
