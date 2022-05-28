@@ -15,10 +15,11 @@ class CreateChartsTable extends Migration
     {
         Schema::create('charts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->default(1);
+            $table->unsignedBigInteger('user_id');
             $table->String('chart_name')->default('chart Name Not Given');
             $table->String('chart_type')->default('chart Type Not Given');
             $table->json('config')->default(json_encode(['config','no data given']));
+            $table->json('raw_data')->default(json_encode(['raw_data','no data given']));
             $table->boolean('if_favourite')->default(false);
             $table->timestamps();
 
